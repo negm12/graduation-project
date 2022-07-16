@@ -11,9 +11,9 @@
             <ul>
                 <li @click="changeactive(0)" :class="[active_link===0?'active-links':'']"><router-link :to="{name:'admindashboard'}">
                     <i class="fa-solid fa-book icon"></i> students</router-link></li>
-                <li @click="changeactive(1)" :class="[active_link===1?'active-links':'']"><router-link :to="{name:'finished'}">
+                <li @click="changeactive(1)" :class="[active_link===1?'active-links':'']"><router-link :to="{name:'managedoctors'}">
                     <i class="fa-solid fa-window-restore icon"></i> doctors</router-link></li>
-                <li @click="changeactive(2)" :class="[active_link===2?'active-links':'']"><router-link :to="{name:'degree'}">
+                <li @click="changeactive(2)" :class="[active_link===2?'active-links':'']"><router-link :to="{name:'managecourses'}">
                     <i class="fa-solid fa-table icon"></i> courses</router-link></li>
                 <li @click="changeactive(3)" :class="[active_link===3?'active-links':'']"><router-link :to="{name:'regest'}">
                     <i class="fa-solid fa-registered icon"></i> term</router-link></li>

@@ -25,6 +25,7 @@
 <script>
 import mainsidebar from '@/components/main-sidebar'
 import usersidebar from '@/components/user-sidebar.vue'
+import stdSubjects from '@/database/std-subjects.js'
 export default {
     components:{
         mainsidebar,usersidebar
@@ -36,6 +37,7 @@ export default {
     },
     data(){
         return{
+            subjects: [],
             subjects:  [
                 {
                     'img':require('../../assets/vuejs.svg'),
@@ -64,6 +66,10 @@ export default {
                 }
             ]
         }
+    },
+    async mounted(){
+        this.subjects = await stdSubjects.stdsubjects().data
+        console.log(this.subjects.data)
     }
 
 }

@@ -9,6 +9,8 @@ import doctordashboard from '@/views/doctor/doc-dashboard'
 import classroom from '@/views/doctor/course-classroom'
 import students from '@/views/doctor/students'
 import admindashboard from '@/views/admin/admin-dashboard'
+import managedoctors from '@/views/admin/manage-doctors'
+import managecourses from '@/views/admin/manage-courses'
 
 
 const routes = [
@@ -61,6 +63,16 @@ const routes = [
     path: '/admin-dashboard',
     name: 'admindashboard',
     component: admindashboard
+  },
+  {
+    path: '/manage-doctors',
+    name: 'managedoctors',
+    component: managedoctors
+  },
+  {
+    path: '/manage-courses',
+    name: 'managecourses',
+    component: managecourses
   }
 
 ]

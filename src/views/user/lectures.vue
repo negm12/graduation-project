@@ -16,7 +16,7 @@
         </div>
         <div class="lectures-cont">
             <div class="container">
-                <div class="lecture card" v-for="(lec , i) in lectures" :key="i">
+                <div class="lecture card bg-dander" v-for="(lec , i) in lectures" :key="i">
                     <div class="title">{{lec.lec_name}}</div>
                     <div class="date">{{lec.publish_date}}</div>
                     <div class="desc">{{lec.desc}}</div>
@@ -140,6 +140,9 @@ export default {
                 .lecture{
                     padding: 20px;
                     background-color: rgb(0 72 255 / 12%);
+                    // background-color: crimson;
+                    // color: #fff;
+
                     .title{
                         font-size: 22px;
                         font-weight: bold;

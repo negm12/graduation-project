@@ -3,39 +3,20 @@
         <div class="overlay"></div>
         <div class="login-form">
             <div class="account-img"><img src="../assets/avatar.jpg" alt="profile image"></div>
-            <form>
+            <form @submit.prevent="login" autocomplete="off">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                    <input type="email" v-model="email"
+                    class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" name="email"/>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" />
+                    <input type="password" v-model="password"
+                    class="form-control" id="exampleInputPassword1" />
                 </div>
-
-                <div class="radio">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="userrole" value="user">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            student
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="userrole" value="doctor">
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            doctor
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="userrole" value="admin">
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            system admin
-                        </label>
-                    </div>
-                </div>
-                
-
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button  type="submit" class="btn btn-primary">Submit</button>
+                <div v-if="error" class="error">{{error}}</div>
             </form>
         </div>
     </div>
@@ -43,7 +24,40 @@
 </template>
 
 <script>
+import auth from '../database/auth'
 export default {
+    data(){
+        return{
+            email: "negm",
+            password: "222",
+            error: null
+        }
+    },
+    methods:{
+        async login(e){
+            try{
+                e.preventDefault();
+                const response =  await auth.login({
+                    email:this.email,
+                    password: this.password
+                })
+                // this.$store.dispatch('settoken',response.data.token)
+                // this.$store.dispatch('setuser',response.data.user)
+                // console.log(response.data.token,response.data.user)
+                this.$router.push({name: 'userdashboard'})
+            } catch(err){
+                this.error = "invalid"
+            }
+            
+            
+
+        },
+        logout(){
+            this.$store.dispatch('settoken',null)
+            this.$store.dispatch('setuser',null)
+            this.$router.push({name:'login'})
+        }
+    }
 
 }
 </script>
